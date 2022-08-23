@@ -84,20 +84,20 @@ select * from `TblUser`;
 select `userName` from `TblUser`;
 select `userName`, `userHp` from `TblUser`;
 select * from `TblUser` where `userId`='A102';
-select * from `TblUser` where `userId`='A104' OR `userId`='A105';
-SELECT * FROM `TblUser` WHERE `userAddr`='신라';
-SELECT * FROM `TblUser` WHERE `userAge` > 30;
-SELECT * FROM `TblUser` WHERE `userHP` IS NULL;
-UPDATE `TblUser` SET `userAge`=42 WHERE `userID`='A104';
-UPDATE `TblUser` SET `userAddr`='경남 김해시' WHERE `userId`='A105';
-DELETE FROM `TblUser` WHERE `userId`='A103';
-SELECT * FROM `TblProduct`;
-SELECT `prdName` FROM `TblProduct`;
-SELECT `prdName`, `prdPrice` FROM `TblProduct`;
-SELECT * FROM `TblProduct` WHERE `prdCompany`='LG';
-SELECT * FROM `TblProduct` WHERE `prdCompany`='삼성';
-UPDATE `TblProduct` SET 
+select * from `TblUser` where `userId`='A104' or `userId`='A105';
+select * from `TblUser` where `userAddr`='신라';
+select * from `TblUser` where `userAge` > 30;
+select * from `TblUser` where `userHP` is null;
+update `TblUser` set `userAge`=42 where `userID`='A104';
+update `TblUser` set `userAddr`='경남 김해시' where `userId`='A105';
+delete from `TblUser` where `userId`='A103';
+select * from `TblProduct`;
+select `prdName` from `TblProduct`;
+select `prdName`, `prdPrice` from `TblProduct`;
+select * from `TblProduct` where `prdCompany`='LG';
+select * from `TblProduct` where `prdCompany`='삼성';
+update `TblProduct` set 
  `prdCompany`='삼성', 
  `prdMakeDate`='2021-01-01' 
- WHERE 
+ where 
  `prdCode`=5;
