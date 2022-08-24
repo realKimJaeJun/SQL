@@ -1,0 +1,4 @@
+create database java2DB;
+create user 'Java2'@'%' identified by 'whwaksdk1!';
+grant all privileges on java2DB.* to 'Java2'@'%';
+flush privileges;
