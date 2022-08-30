@@ -96,11 +96,11 @@ select * from `product`;
 #실습 1-7
 select `company` from `product`;
 #실습 1-8
-select `company` as a from `product` group by `company`;
+select distinct `company` from `product`;
 #실습 1-9
 select `prodname`, `price` from `product`;
 #실습 1-10
-
+select `prodname`, `price` + 500 as `조정단가` from `product`;
 #실습 1-11
 select `prodname`, `stock`, `price` from `product` where `company`='오리온';
 #실습 1-12
@@ -122,19 +122,32 @@ select * from `customer` where `addr` is not null;
 select * from `customer` order by `rdate` desc;
 #실습 1-20
 select * from `order` where `ordercount` >= 3 order by `ordercount` desc,
- `orderid` asc;
+ `orderproduct` asc;
 
 #실습 1-21
 select avg(price) as `단가평균` from `product`;
 #실습 1-22
 select sum(stock) as `재고량 합계` from `product` where `company` = '농심';
 #실습 1-23
-select count(name) as `고객수` from `customer`;
+select count(custid) as `고객수` from `customer`;
 #실습 1-24
-select count(company) as `제조업체 수` from `product`;
+select count(distinct `company`) as `제조업체 수` from `product`;
 #실습 1-25
+select	`orderproduct` as `주문 상품번호`, sum(`ordercount`) as `총 주문수량`
+from `order` group by `orderproduct` order by `주문 상품번호`;
 #실습 1-26
+select `company` as `제조업체`, count(*) as `제품수`, max(`price`) as `최고가`
+from `product` group by `company` order by `제조업체`;
 #실습 1-27
+select `company` as `제조업체`, count(*) as `제품수`, max(`price`) as `최고가`
+from `product` group by `company` having `제품수` >= 2 order by `제품수`;
 #실습 1-28
+select `orderproduct`, `orderid`, sum(`ordercount`) as `총 주문수량` 
+from `order` group by `orderno` order by `orderProduct`;
 #실습 1-29
+select a.`orderid`, b.`prodname` from `order` as a 
+join `product` as b
+on a.orderProduct = b.prodNo
+where `orderid` = 'c102';
 #실습 1-30
+select * from `order` where substr(`orderdate`, 1, 10) = '2022-07-03%';
