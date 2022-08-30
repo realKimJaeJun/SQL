@@ -121,8 +121,11 @@ select * from `bank_account` where `a_item_dist`='S1' order by `a_balance` desc 
 #실습 2-19
 select * from `bank_transaction` where `t_dist` and `t_amount` order by `t_dist`, `t_amount` desc;
 #실습 2-20
-select
-	count(`t_dist`) as `입금 건수`
+select * from `bank_transaction` where `t_dist`=1;
+select 
+	count(`t_dist`) as `입금 건수`,
+    count(`t_dist`) as `출금 건수`,
+    count(`t_dist`) as `조회 건수`
     from `bank_transaction`;
 
 #실습 2-21
