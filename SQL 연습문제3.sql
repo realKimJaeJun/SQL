@@ -191,7 +191,7 @@ select
 	`reggrade`
 from `student` as a
 join `register` as b on a.stdno = b.regstdno
-join `lecture` as c on b.reglecno = c.lecno;
+join `lecture` as c on b.reglecno = c.lecno
 where `reggrade` = 'F';
 #실습3-29
 select
@@ -200,10 +200,12 @@ select
     sum(`leccredit`) as `이수학점`
 from `student` as a
 join `register` as b on a.stdno = b.regstdno
-join `lecture` as c on b.reglecno = c.lecno;
+join `lecture` as c on b.reglecno = c.lecno
 where `regtotalscore` >= 60
 group by `stdno`;
+
 #실습3-30
+
 select
 	`stdno`,
     `stdname`,
@@ -211,5 +213,5 @@ select
 	group_concat(if(`regtotalscore` >= 60, `lecname`, null)) as `이수과목`
 from `student` as a
 join `register` as b on a.stdno = b.regstdno
-join `lecture` as c on b.reglecno = c.lecno;
-group by `stdno`;
+join `lecture` as c on b.reglecno = c.lecno
+order by `stdno`;
