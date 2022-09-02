@@ -166,7 +166,7 @@ on a.stdno = b.regstdno where `reglecno` = 349;
 
 #실습3-21
 select
-	`stdno`
+	`stdno`,
     `stdname`,
     count(`stdno`) as `수강신청 건수`,
     sum(`regtotalscore`) as `종합점수`,
@@ -174,14 +174,64 @@ select
 from `student` as a
 join `register` as b
 on a.stdno = b.regstdno
-###
+group by `stdno`;
 
 #실습3-22
+select * from `register` as a
+join `lecture` as b
+on a.reglecno = b.lecno; 
+
 #실습3-23
+select 
+	`regStdNo`,
+    `regLecNo`,
+    `lecName`,
+    `regMidScore`,
+    `regFinalScore`,
+    `regtotalscore`,
+    `regGrade`
+from `lecture` as a 
+join `register` as b
+on a.lecno = b.reglecno;
+
 #실습3-24
+select 
+	count(*) as `사회복지 마케팅 수강 신청건수`,
+    avg(`regTotalScore`) as `사회복지 마케팅 평균`
+from `register` as a 
+join `lecture` as b
+on a.reglecno = b.lecno
+where `lecno` = 349;
+
 #실습3-25
+select
+	`regstdno`,
+    `lecname`
+from `register` as a
+join `lecture` as b
+on a.reglecno = b.lecno
+where `regtotalscore` >= 90;
+
 #실습3-26
+select * from `student` as a
+join `register` as b on a.stdno = b.regstdno
+join `lecture` as c on b.reglecno = c.lecno;
+
 #실습3-27
+select
+	`stdno`,
+    `stdname`,
+    `lecno`,
+    `lecname`,
+    `regmidscore`,
+    `regfinalscore`,
+    `regtotalscore`,
+    `reggrade`
+from `student` as a
+join `register` as b on a.stdno = b.regstdno 
+join `lecture` as c on b.reglecno = c.lecno
+order by `regtotalscore` desc; 
+
 #실습3-28
 select
 	`stdno`,
@@ -193,6 +243,7 @@ from `student` as a
 join `register` as b on a.stdno = b.regstdno
 join `lecture` as c on b.reglecno = c.lecno
 where `reggrade` = 'F';
+
 #실습3-29
 select
 	`stdno`,
@@ -205,7 +256,6 @@ where `regtotalscore` >= 60
 group by `stdno`;
 
 #실습3-30
-
 select
 	`stdno`,
     `stdname`,
